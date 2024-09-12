@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './styles.css';
-import botImage from '/src/assets/rk.png'; // Import the bot image
+import '../styles.css';
+import botImage from '/src/assets/rk.png';
 
 function WelcomePage({ onStartChat }) {
   const [isChatStarted, setIsChatStarted] = useState(false);

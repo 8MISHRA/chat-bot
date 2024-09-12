@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './styles.css';
+import '../styles.css';
 import Navbar from './Navbar';
-import userImage from './assets/profile.jpeg'; 
-import botImage from './assets/rk.png'; 
+import userImage from '../assets/profile.jpeg'; 
+import botImage from '../assets/rk.png'; 
+
 function ChatWindow({ messages }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 

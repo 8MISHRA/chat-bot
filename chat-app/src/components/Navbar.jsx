@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css'; 
+import '../styles.css'; 
 import botImage from '/src/assets/rk.png'; 
 
 

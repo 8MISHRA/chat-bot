@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css';
+import '../styles.css';
 import { FaMicrophone, FaMicrophoneAlt, FaPaperPlane, FaFileUpload, FaRegSmile, FaTimesCircle } from 'react-icons/fa';
 import EmojiPicker from 'emoji-picker-react';
 

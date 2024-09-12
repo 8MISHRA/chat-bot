@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import WelcomePage from './WelcomePage';
-import ChatWindow from './ChatWindow';
-import MessageInput from './MessageInput';
-import Bot from './Bot';
+import WelcomePage from '../src/components/WelcomePage';
+import ChatWindow from '../src/components/ChatWindow';
+import MessageInput from '../src/components/MessageInput';
+import Bot from '../src/components/Bot';
 import './styles.css';
 
 function App() {
