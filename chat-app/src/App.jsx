@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import WelcomePage from './WelcomePage';
+import ChatWindow from './ChatWindow';
+import MessageInput from './MessageInput';
+import Bot from './Bot';
+import './styles.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  const [messages, setMessages] = useState([]);
+
+  const startChat = () => {
+    setIsChatVisible(true);
+  };
+
+  const addMessage = (message) => {
+    const now = new Date();
+    const timestamp = now.toLocaleTimeString();
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, sender: 'user', timestamp }
+    ]);
+    setTimeout(() => {
+      const botResponse = Bot(message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: botResponse, sender: 'bot', timestamp: now.toLocaleTimeString() }
+      ]);
+    }, 1000);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      {!isChatVisible ? (
+        <WelcomePage onStartChat={startChat} />
+      ) : (
+        <div className="chat-container">
+          <ChatWindow messages={messages} />
+          <MessageInput onSend={addMessage} />
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
