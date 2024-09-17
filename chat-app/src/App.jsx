@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import WelcomePage from '../src/components/WelcomePage';
 import ChatWindow from '../src/components/ChatWindow';
 import MessageInput from '../src/components/MessageInput';

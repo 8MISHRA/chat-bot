@@ -28,11 +28,9 @@ function ChatWindow({ messages }) {
                 {msg.sender === 'user' && (
                   <>
                     <img src={userImage} alt="User Logo" className="logo" />
-                    <span className="username">{msg.username || 'Raushan'}
+                    <span className="username">{msg.username || 'You'}
                       <div className="timestamp">{msg.timestamp}</div>
-
                     </span>
-
                   </>
                 )}
                 {msg.sender === 'bot' && (

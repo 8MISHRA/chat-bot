@@ -7,7 +7,13 @@ function Bot(message) {
       (msg) => `Uppercase: ${msg.toUpperCase()}`,
       (msg) => `Lowercase: ${msg.toLowerCase()}`,
       (msg) => `Palindrome check: ${isPalindrome(msg) ? "Yes" : "No"}`,
-      (msg) => `Word frequency: ${JSON.stringify(getWordFrequency(msg))}`    
+      (msg) => `Word frequency: ${JSON.stringify(getWordFrequency(msg))}`,
+      (msg) => `First and last word: ${getFirstAndLastWord(msg)}`,
+      (msg) => `Character count (excluding spaces): ${msg.replace(/\s+/g, '').length}`,
+      (msg) => `Number of sentences: ${msg.split(/[.!?]/).filter(Boolean).length}`,
+      (msg) => `ASCII values: ${msg.split('').map(char => char.charCodeAt(0)).join(', ')}`,
+      (msg) => `Text without spaces: ${msg.replace(/\s+/g, '')}`,
+      (msg) => `Leetspeak: ${toLeetSpeak(msg)}`,
     ];
   
     const transform = transformations[Math.floor(Math.random() * transformations.length)];
@@ -42,6 +48,19 @@ function Bot(message) {
       return freq;
     }, {});
   }
+  
+
+  function getFirstAndLastWord(str) {
+    const words = str.trim().split(/\s+/);
+    if (words.length < 2) return `Only one word: ${words[0]}`;
+    return `First: ${words[0]}, Last: ${words[words.length - 1]}`;
+  }
+
+  function toLeetSpeak(str) {
+    const leetDict = { a: '4', e: '3', i: '1', o: '0', s: '5', t: '7' };
+    return str.replace(/[aeiost]/gi, (char) => leetDict[char.toLowerCase()] || char);
+  }
+
   
   export default Bot;
   
