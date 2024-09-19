@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles.css'; 
-import botImage from '/src/assets/rk.png'; 
+import botImage from '/src/assets/rk.png';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 
 function Navbar({ onThemeChange }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -13,7 +14,7 @@ function Navbar({ onThemeChange }) {
   return (
     <div className={`navbar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="chatbot-header">
-      <img src={botImage} alt="Bot Logo" className="logos" />
+        <img src={botImage} alt="Bot Logo" className="logos" />
         <h1>ChatWave</h1>
       </div>
       <button onClick={handleThemeToggle} className="theme-toggle">

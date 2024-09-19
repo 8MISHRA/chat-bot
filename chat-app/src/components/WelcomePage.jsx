@@ -25,12 +25,20 @@ function WelcomePage({ onStartChat }) {
           <li>✨ Real-time text transformations</li>
           <li>💡 Helpful suggestions and tips</li>
           <li>🎉 Fun facts and interesting conversations</li>
+          <li>Enjoy Chaating</li>
         </ul>
+        {/* Design by Raushan with Love */}
+      <footer className="footer">
+        <p className="designed-by">
+          Designed with <i className="fas fa-heart love-icon"></i> by Raushan & Divyansh
+        </p>
+      </footer>
         <button onClick={handleStartChat} className="start-chat-button">
           Let's Chat!
         </button>
       </div>
     </div>
+    
   );
 }
 
