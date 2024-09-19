@@ -92,10 +92,9 @@ function MessageInput({ onSend }) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setFileContent(event.target.result);
-        // Automatically click the send button after 1 second of setting file content
         setTimeout(() => {
           if (sendButtonRef.current) {
-            sendButtonRef.current.click();  // Trigger the send button click
+            sendButtonRef.current.click();
           }
         }, 1000);
       };
@@ -124,7 +123,7 @@ function MessageInput({ onSend }) {
         <button
           type="submit"
           className="send-button"
-          ref={sendButtonRef} // Set reference for the send button
+          ref={sendButtonRef}
         >
           <FaPaperPlane />
         </button>
