@@ -1,15 +1,29 @@
-/* styles.css */
 body {
-  background-image: url('/src/assets/background.jpeg'); /* Replace with your background image path */
-  background-repeat: repeat; /* Prevent the image from repeating */
+  background-image: url('/src/assets/background.jpeg'); 
+  background-repeat: repeat;
   margin: 0;
   padding: 0;
 
 
-  font-family: Arial, sans-serif; /* Optional: Set a font for the page */
+
+
+  font-family: Arial, sans-serif;
 }
 
-/* General chat window styles */
+@media (max-width: 768px) {
+  body {
+    background-size: contain;
+    background-position: top;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-size: 100% 100%;
+    background-position: center;
+    height: 800px; 
+  }
+}
 .chat-window {
   display: flex;
   flex-direction: column;
@@ -23,13 +37,11 @@ body {
   
 }
 
-/* Light mode styles */
 .light-mode {
   background-color: #ffffff;
   color: white;
 }
 
-/* Dark mode styles */
 .dark-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -37,20 +49,19 @@ body {
 
 
 
-/* Messages container */
 .messages-container {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
   background-image: url("/assets/tile.jpg");
-  opacity: 0.8;
 
 }
 
-/* Individual message styles */
 .message {
   display: flex;
   align-items: center;
@@ -58,22 +69,38 @@ body {
   margin-bottom: 15px;
 }
 
-/* User and bot messages */
+
 .message.user {
-  justify-content: flex-end;
+  background-color: #d1e7dd;
+  align-self: flex-end; 
+  border-radius: 16px;
+
+
 }
 
 .message.bot {
-  justify-content: flex-start;
+  background-color: #7eb5eb; 
+  align-self: flex-start; 
+  border-radius: 16px;
+  color: white;
 }
 
-/* Message content styling */
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+}
+
 .message-content {
   width: 200px;
   padding: 15px;
   border-radius: 15px;
   position: relative;
-  background-color: #f0f0f0;
   color: #333333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
@@ -84,16 +111,14 @@ body {
   color: #e0e0e0;
 }
 
-/* Message logos */
 .message-content .logo {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 10px;
-  border: 2px solid #4a90e2; /* Match the navbar color */
+  border: 2px solid #4a90e2; 
 }
 
-/* Timestamp styling */
 .timestamp {
   font-size: 0.75rem;
   color: #fc0909;
@@ -103,7 +128,6 @@ body {
   font-weight: bold;
 }
 
-/* Button styles */
 button {
   background-color: #4a90e2;
   color: #ffffff;
@@ -123,7 +147,6 @@ button:active {
   transform: scale(0.98);
 }
 
-/* Responsive styling */
 @media (max-width: 600px) {
   .message-content {
     max-width: 90%;
@@ -139,29 +162,37 @@ button:active {
 }
 
 .logo {
-  width: 40px; /* Adjust the size as needed */
-  height: 40px; /* Adjust the size as needed */
-  border-radius: 50%; /* Optional: makes the image circular */
-  margin-right: 10px; /* Space between image and icon */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  margin-right: 10px; 
 }
 
 .icon {
-  width: 20px; /* Adjust the size as needed */
-  height: 20px; /* Adjust the size as needed */
-  margin-right: 10px; /* Space between icon and username */
+  width: 20px; 
+  height: 20px; 
+  margin-right: 10px;
 }
 
 .username {
-  font-weight: bold; /* Bold username */
-  margin-right: 10px; /* Space between username and message text */
+  font-weight: bold;
+  margin-right: 10px; 
   color: green; 
   font-style: italic;
 }
 
-.message-text{
+.message-text {
   font-weight: bold;
   margin-top: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
+
+
+
 
 .message-input {
   display: flex;
@@ -169,38 +200,38 @@ button:active {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   padding: 10px;
-  background-color: #f9f9f9; /* Light background for the input area */
-  border-top: 1px solid #ddd; /* Light border on the top */
+  background-color: #f9f9f9; 
+  border-top: 1px solid #ddd;
 }
 
 .message-input input {
-  flex: 1; /* Take up available space */
+  flex: 1;
   padding: 10px;
-  border: 1px solid #ddd; /* Border around the input field */
-  border-radius: 4px; /* Rounded corners for the input field */
-  font-size: 1em; /* Font size for the input text */
-  margin-right: 10px; /* Space between the input field and button */
-  outline: none; /* Remove default focus outline */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin-right: 10px; 
+  outline: none;
 }
 
 .message-input input:focus {
-  border-color: #007bff; /* Change border color on focus */
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2); /* Light shadow on focus */
+  border-color: #007bff; 
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2); 
 }
 
 .message-input button {
   padding: 10px 15px;
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners for the button */
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Text color for the button */
-  font-size: 1em; /* Font size for the button text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  border: none;
+  border-radius: 4px; 
+  background-color: #007bff; 
+  color: white; 
+  font-size: 1em; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
 }
 
 .message-input button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #0056b3; 
 }
 
 .app{
@@ -210,67 +241,83 @@ button:active {
   flex-direction: column;
 }
 
-.chat-container{
+.chat-container {
   margin-left: 600px;
   border-radius: 15px;
   height: 500px;
   margin-bottom: 100px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-
 }
 
-/* Styles for the Navbar component */
+@media (max-width: 768px) {
+  .chat-container {
+    margin-left: 50px; 
+    height: 400px;
+    margin-top: 50px;   
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    margin-left: 0;    
+    width: 100%;       
+    height: auto;      
+  }
+}
+
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px; /* Set the height of the Navbar */
-  padding: 0 20px; /* Horizontal padding for spacing */
-  background-color: #024082; /* Primary background color */
-  color: white; /* Text color */
+  height: 100px; 
+  padding: 0 20px; 
+  background-color: #024082; 
+  color: white; 
+  
 
 }
 
 .navbar h1 {
-  font-size: 1.5em; /* Font size for the title */
-  margin: 0; /* Remove default margin */
+  font-size: 1.5em; 
+  margin: 0; 
 }
 
 .theme-toggle {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners for the button */
-  background-color: transparent; /* Background color for the button */
-  color: white; /* Text color for the button */
-  font-size: 1em; /* Font size for the button text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px; 
+  background-color: transparent; 
+  color: white; 
+  font-size: 1em; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 .theme-toggle i {
-  margin-right: 8px; /* Space between the icon and text */
-  font-size: 1.2em; /* Font size for the icon */
+  margin-right: 8px; 
+  font-size: 1.2em;
+  color: white;
 }
 
 .theme-toggle:hover {
-  background-color: #003d7a; /* Darker color on hover */
+  background-color: #003d7a; 
 }
 
-/* Dark mode styles */
 .dark-mode {
-  background-color: #343a40; /* Dark background color */
-  border-bottom: 1px solid #1d2124; /* Darker border for dark mode */
+  background-color: #343a40; 
+  border-bottom: 1px solid #1d2124; 
   color: white;
 }
 
 .dark-mode .theme-toggle {
-  background-color: #495057; /* Darker button background color */
+  background-color: #495057; 
 }
 
 .dark-mode .theme-toggle:hover {
-  background-color: #343a40; /* Darker color on hover for dark mode */
+  background-color: #343a40; 
 }
 
 .welcome-page{
@@ -281,7 +328,6 @@ button:active {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Container for welcome content */
 .welcome-content {
   text-align: center;
   background-color: #024082;
@@ -292,14 +338,12 @@ button:active {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo styling */
 .logo {
   width: 100px;
   height: auto;
   margin-bottom: 20px;
 }
 
-/* Heading styling */
 h1 {
   font-size: 2.5em;
   color: white;
@@ -307,7 +351,6 @@ h1 {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Paragraph styling */
 p {
   font-size: 1.2em;
   color: #666;
@@ -336,15 +379,11 @@ p {
   transform: scale(0.50);
 }
 
-/*  */
-
-/* Add an animation when the chat starts */
 .welcome-page.fold-up {
   transform: translateY(-100%);
   opacity: 0.5;
 }
 
-/* Content inside the welcome page */
 .welcome-content {
   text-align: center;
 }
@@ -419,7 +458,7 @@ p {
 
 .emoji-picker-container {
   position: fixed;
-  bottom: 60px; /* Adjust based on your layout */
+  bottom: 60px; 
   left: 53%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -471,7 +510,6 @@ p {
 
 
 
-/* Welcome Page Styles */
 .welcome-page {
   display: flex;
   align-items: center;
@@ -512,7 +550,7 @@ p {
 
 .features-list li {
   font-size: 1.1rem;
-  color: #666;
+  color: white;
   margin: 0.5rem 0;
 }
 
@@ -530,3 +568,43 @@ p {
 .start-chat-button:hover {
   background-color: #0056b3;
 }
+
+
+
+
+.light-mode .theme-toggle i {
+  color: white;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: #1e1e1e;
+  color: orange;
+}
+
+.dark-mode .theme-toggle i {
+  color: orange;
+}
+
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: white;
+  background-color:#303030;
+  border-radius:8px;
+}
+
+.designed-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:rgb(255, 255, 255);
+}
+
+.love-icon {
+  color: red;
+  margin: 0 5px;
+}
+

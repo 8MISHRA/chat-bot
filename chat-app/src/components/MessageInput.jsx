@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import '../styles.css';
 import { FaMicrophone, FaMicrophoneAlt, FaPaperPlane, FaFileUpload, FaRegSmile, FaTimesCircle } from 'react-icons/fa';
 import EmojiPicker from 'emoji-picker-react';
@@ -8,9 +8,10 @@ function MessageInput({ onSend }) {
   const [isListening, setIsListening] = useState(false);
   const [fileContent, setFileContent] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const sendButtonRef = useRef(null); // Reference to the send button
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e?.preventDefault();  // Make e optional in case of automatic sending
     if (input.trim()) {
       onSend(input);
       setInput('');
@@ -42,6 +43,11 @@ function MessageInput({ onSend }) {
     const transcript = event.results[0][0].transcript;
     setInput(transcript);
     setIsListening(false);
+    setTimeout(() => {
+      if (sendButtonRef.current) {
+        sendButtonRef.current.click();  // Automatically click send button after 1 second
+      }
+    }, 1000);
   };
 
   recognition.onerror = (event) => {
@@ -55,6 +61,12 @@ function MessageInput({ onSend }) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setFileContent(event.target.result);
+        // Automatically click the send button after 1 second of setting file content
+        setTimeout(() => {
+          if (sendButtonRef.current) {
+            sendButtonRef.current.click();  // Trigger the send button click
+          }
+        }, 1000);
       };
       reader.readAsText(file);
     }
@@ -80,6 +92,12 @@ function MessageInput({ onSend }) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setFileContent(event.target.result);
+        // Automatically click the send button after 1 second of setting file content
+        setTimeout(() => {
+          if (sendButtonRef.current) {
+            sendButtonRef.current.click();  // Trigger the send button click
+          }
+        }, 1000);
       };
       reader.readAsText(file);
     }
@@ -103,7 +121,11 @@ function MessageInput({ onSend }) {
             <FaTimesCircle />
           </button>
         )}
-        <button type="submit" className="send-button">
+        <button
+          type="submit"
+          className="send-button"
+          ref={sendButtonRef} // Set reference for the send button
+        >
           <FaPaperPlane />
         </button>
       </div>
