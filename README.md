@@ -24,7 +24,7 @@ Welcome to **ChatWave**, an interactive and fun chatbot built with **React.js** 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/chatwave.git
+   git clone https://github.com/8MISHRA/Web-Development-Assignment-1.git
    ```
 2. Navigate to the project directory:
    ```bash
